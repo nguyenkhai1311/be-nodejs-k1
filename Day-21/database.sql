@@ -130,5 +130,3 @@ INNER JOIN chi_tiet_su_dung_dich_vu AS ctsddv ON ctsddv.MaDatPhong = dp.MaDatPho
 INNER JOIN dich_vu_di_kem AS dvdk ON dvdk.MaDV = ctsddv.MaDV
 INNER JOIN khach_hang AS kh ON kh.MaKH = dp.MaKH
 WHERE (YEAR(dp.ngaydat) = 2016 OR YEAR(dp.ngaydat) = 2017) AND p.giaphong > 50000;
-
-drop database database_04_Khai;
