@@ -1,0 +1,30 @@
+* {
+    font-family: "Source Code Pro", monospace;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #191a2e;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container p {
+    display: flex;
+    justify-content: center;
+    color: #baa4da;
+    font-weight: 700;
+}
+
+.container span {
+    color: #45ebd0;
+}
+
+.container .btn-back {
+    margin-top: 20px;
+    margin-left: 30px;
+}

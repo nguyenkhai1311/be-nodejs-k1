@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OTP Check</title>
+        <link rel="stylesheet" href="/public/style/css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <form action="/" method="post">
+                <div>
+                    <input
+                        type="number"
+                        name="number-phone"
+                        placeholder="Phone number..."
+                        value="{old.number}"
+                    />
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+            <span class="error">{error.empty}</span>
+            <span class="error">{error.start}</span>
+            <span class="error">{error.long}</span>
+        </div>
+        <script src="/public/style/js/scrpit.js"></script>
+    </body>
+</html>

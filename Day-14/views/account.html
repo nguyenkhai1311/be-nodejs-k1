@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>OTP Check</title>
+        <link rel="stylesheet" href="/public/style/css/account.css" />
+    </head>
+    <body>
+        <div class="container">
+            <p>Account: number-phone</p>
+            <span class="error">error.otp</span>
+            <form action="/success/number-phone" method="post">
+                <input
+                    type="text"
+                    placeholder="0"
+                    maxlength="1"
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                    name="numberOne"
+                />
+                <input
+                    type="text"
+                    placeholder="0"
+                    maxlength="1"
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                    name="numberTwo"
+                />
+                <input
+                    type="text"
+                    placeholder="0"
+                    maxlength="1"
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                    name="numberThree"
+                />
+                <input
+                    type="text"
+                    placeholder="0"
+                    maxlength="1"
+                    oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+                    name="numberFour"
+                />
+                <button type="submit" class="submit">SUBMIT</button>
+            </form>
+            <button type="submit" class="btn-back">Back to Home</button>
+        </div>
+        <script src="./public/style/js/scrpit.js"></script>
+    </body>
+</html>
