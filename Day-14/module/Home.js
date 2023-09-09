@@ -14,19 +14,13 @@ class Home extends Base {
             });
         } else if (method === "POST") {
             console.log(`Đây là POSTTT111`);
-            const chunks = [];
-            req.on("data", (chunk) => {
-                chunks.push(chunk);
-            });
-            req.on("end", () => {
-                const data = Buffer.concat(chunks);
-                const body = data.toString();
-                console.log(body);
+            req.on("data", (buffer) => {
+                const body = buffer.toString();
                 const errors = {};
                 let numberPhone = "";
                 if (body) {
-                    numberPhone = body.split("=").splice(-1).toString();
-                    console.log(numberPhone);
+                    const bodyObj = new URLSearchParams(body);
+                    numberPhone = bodyObj.get("numberPhone");
                     dataOtp.focus.phone = numberPhone;
                     console.log(dataOtp.focus.phone);
                     if (numberPhone === "") {
@@ -65,21 +59,14 @@ class Home extends Base {
             this.render(req, res, "account");
         } else {
             console.log("Đây là POSTTTT");
-            const chunks = [];
             req.on("data", (chunk) => {
-                chunks.push(chunk);
-            });
-            req.on("end", () => {
-                const data = Buffer.concat(chunks);
-                let body = data.toString();
-                const keyword = "=";
-                let position = body.indexOf(keyword);
-                let number = "";
-                while (position !== -1) {
-                    number += body.slice(position + 1, position + 2);
-                    body = body.slice(position + 2);
-                    position = body.indexOf(keyword);
-                }
+                const body = chunk.toString();
+                const bodyObj = new URLSearchParams(body);
+                const numberOne = bodyObj.get("numberOne");
+                const numberTwo = bodyObj.get("numberTwo");
+                const numberThree = bodyObj.get("numberThree");
+                const numberFour = bodyObj.get("numberFour");
+                let number = `${numberOne}${numberTwo}${numberThree}${numberFour}`;
                 console.log(number);
                 const otpLength = dataOtp.otp.length;
                 for (let i = 0; i < otpLength; i++) {

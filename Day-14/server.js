@@ -14,7 +14,6 @@ const server = http.createServer((req, res) => {
     console.log(path);
     const pattern = /\/*$/; // regex
     const pathname = url.pathname.replace(pattern, "");
-    console.log(pathname);
     // Đọc file tĩnh
     if (pathname.indexOf("public") !== -1) {
         const ext = pathname.split(".").slice(-1).join();
