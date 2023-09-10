@@ -1,0 +1,45 @@
+html {
+    scroll-behavior: smooth;
+    font-family: "Roboto", sans-serif;
+}
+
+img {
+    width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: #009bff;
+}
+
+span {
+    font-weight: 700;
+}
+
+body {
+    background-color: #333;
+    color: #ffff;
+    max-width: 1228px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.desc li {
+    margin-top: 12px;
+}
+
+.btn-action {
+    background-color: #222;
+    border: 2px solid #009bff;
+    width: 100%;
+    border-radius: 10px;
+    height: 5vh;
+    font-size: 16px;
+    color: #009bff;
+}
+
+.btn-action:hover {
+    background-color: #009bff;
+    color: #222;
+    cursor: pointer;
+}

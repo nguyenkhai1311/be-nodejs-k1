@@ -1,0 +1,55 @@
+* {
+    font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffff;
+}
+
+.content {
+    margin-top: 210px;
+}
+
+.shape {
+    background-color: #222;
+    border: 2px solid #009bff;
+    width: 100%;
+    border-radius: 10px;
+    height: 5vh;
+    font-size: 16px;
+    color: #009bff;
+}
+
+.shape:hover {
+    background-color: #009bff;
+    color: #222;
+    cursor: pointer;
+}
+
+.notification {
+    display: flex;
+    position: fixed;
+    align-items: center;
+    justify-content: center;
+    top: 20px;
+    right: 20px;
+    background-color: #000;
+    padding: 4px 25px 4px 10px;
+}
+
+.notification .desc {
+    margin-left: 10px;
+}
+
+.notification .exit {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    top: 4px;
+    right: 12px;
+    cursor: pointer;
+}
