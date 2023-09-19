@@ -1,0 +1,70 @@
+<h1>Sửa khách hàng</h1>
+<% if(msg?.length) {%>
+    <div class="alert alert-danger"><%= msg %></div>
+<% } %>
+<% if(success?.length) {%>
+    <div class="alert alert-success"><%= success %></div>
+<% } %>
+<form action="" method="post">
+    <div class="mb-3">
+        <label for="">Tên</label>
+        <input
+            type="text"
+            name="name"
+            placeholder="Tên..."
+            class="form-control"
+            value="<%= infoCustomer.dataValues.name%>"
+        />
+        <span class="text-danger"
+            ><%= validate.getError(errors, "name")%></span
+        >
+    </div>
+    <div class="mb-3">
+        <label for="">Email</label>
+        <input
+            type="email"
+            name="email"
+            placeholder="Email..."
+            class="form-control"
+            value="<%= infoCustomer.dataValues.email%>"
+            readonly
+        />
+        <span class="text-danger"
+            ><%= validate.getError(errors, "email")%></span
+        >
+    </div>
+    <div class="mb-3">
+        <label for="">Mật khẩu</label>
+        <input
+            type="password"
+            name="password"
+            placeholder="Mật khẩu..."
+            class="form-control"
+            value="<%= infoCustomer.dataValues.password%>"
+        />
+        <span class="text-danger"
+            ><%= validate.getError(errors, "password")%></span
+        >
+    </div>
+    <div class="mb-3">
+        <label for="">Trạng thái</label>
+        <select name="status" class="form-select">
+            <option value="0" <%= infoCustomer.dataValues.status === 0 ? "selected" : "" %>>Chưa kích hoạt</option>
+            <option value="1" <%= infoCustomer.dataValues.status === 1 ? "selected" : "" %>>Kích hoạt</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="">Tỉnh/Thành phố</label>
+        <select name="province_id" class="form-select">
+            <option value='0' >Chọn Tỉnh/Thành phố</option>
+            <% provinceList.forEach(({id, name}) => { %>
+            <option value="<%= id %>" <%= infoCustomer.dataValues.province_id === id ? "selected" : "" %>><%= name%></option>
+            <% }) %>
+        </select>
+        <span class="text-danger"
+            ><%= validate.getError(errors, "province_id")%></span
+        >
+    </div>
+    <button class="btn btn-success">Lưu</button>
+    <a href="/customers" class="btn btn-danger">Hủy</a>
+</form>
