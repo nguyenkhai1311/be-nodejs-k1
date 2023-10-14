@@ -1,0 +1,38 @@
+<h2>Danh sách Role</h2>
+<form action="/role/add" method="post" class="input-group">
+    <input
+        type="text"
+        name="name_role"
+        placeholder="Nhập tên role mới..."
+        class="form-control mb-3"
+    />
+    <button class="btn btn-success mb-3">Thêm</button>
+</form>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th width="50%">Module</th>
+            <th>Sửa</th>
+            <th>Xóa</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if(roles?.length > 0) {%> <% roles.forEach((role) => { %>
+
+        <tr>
+            <td><%= role.name%></td>
+            <td>
+                <a href="/role/edit/<%=role.id%>" class="btn btn-primary">
+                    Sửa
+                </a>
+            </td>
+            <td>
+                <form action="/role/delete/<%=role.id%>" method="post">
+                    <button class="btn btn-danger">Xóa</button>
+                </form>
+            </td>
+        </tr>
+        <% })} %>
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+<h2>Thiết lập Role</h2>
+<form action="" method="post">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th width="20%">Module</th>
+                <th>Quyền</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= role.name%></td>
+                <td>
+                    <div class="row">
+                        <% permissions.forEach((permission) => { %>
+                        <div class="col">
+                            <label for="">
+                                <input type="checkbox" name="permission"
+                                value="<%= permission.id%>" <%
+                                permissions_role.forEach((value) => { %> <%-
+                                value.id === permission.id ? `checked` : `` %>
+                                <%}) %> /><%= permission.value%>
+                            </label>
+                        </div>
+                        <% }) %>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+</form>
