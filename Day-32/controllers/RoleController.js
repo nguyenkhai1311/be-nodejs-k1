@@ -52,7 +52,7 @@ module.exports = {
         });
         await role.removePermission(array);
         await role.addPermission(permission);
-        res.redirect(`/role/edit/${id}`);
+        res.redirect(`/role`);
     },
 
     destroy: async (req, res) => {
