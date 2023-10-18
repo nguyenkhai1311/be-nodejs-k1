@@ -1,0 +1,29 @@
+<h2>Quản lý Link</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>URL</th>
+            <th>ShortURL</th>
+            <th width="20%">Lượt xem</th>
+            <th>Sửa</th>
+            <th>Xóa</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if(links) {%> <% links.forEach((link) => { %>
+        <tr>
+            <td><%= link.name%></td>
+            <td>localhost:3000/links/<%= link.short_url%></td>
+            <td></td>
+            <td>
+                <a href="/links/update/<%= link.id %>" class="btn btn-warning"
+                    >Sửa</a
+                >
+            </td>
+            <form action="/links/delete/<%= link.id %>" method="post">
+                <td><button class="btn btn-danger">Xóa</button></td>
+            </form>
+        </tr>
+        <%})} %>
+    </tbody>
+</table>

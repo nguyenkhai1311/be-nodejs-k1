@@ -1,0 +1,24 @@
+<h2>Rút gọn link</h2>
+<form action="" method="post">
+    <div>
+        <label for="">URL</label>
+        <input
+            type="text"
+            name="url"
+            class="form-control ml-3"
+            style="width: 60%"
+            value="<%= link.name%>"
+        />
+    </div>
+    <div class="mt-3">
+        <label for="">Shorten URL</label>
+        <input
+            type="text"
+            name="short_url"
+            class="form-control ml-3"
+            style="width: 60%"
+            value="<%= link.short_url%>"
+        />
+    </div>
+    <button class="btn btn-primary mt-3">Lưu thay đổi</button>
+</form>

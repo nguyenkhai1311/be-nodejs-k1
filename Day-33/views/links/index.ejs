@@ -1,0 +1,31 @@
+<h2>Rút gọn link</h2>
+<form action="" method="post" class="d-flex">
+    <input
+        type="text"
+        name="url"
+        class="form-control ml-3"
+        style="width: 60%"
+    />
+    <button class="btn btn-primary ms-3" style="width: 20%">Shorten URL</button>
+</form>
+<%- short_url.length ? `<a href="http://${url}" target="_blank"
+    >localhost:3000/links/${short_url}</a
+>` : "" %>
+
+<h2 class="mt-5">Shorten Link</h2>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>URL</th>
+            <th>ShortURL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if(links) {%> <% links.forEach((link) => { %>
+        <tr>
+            <td><%= link.name%></td>
+            <td>localhost:3000/links/<%= link.short_url%></td>
+        </tr>
+        <%})} %>
+    </tbody>
+</table>
