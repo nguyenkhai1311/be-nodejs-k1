@@ -1,0 +1,43 @@
+<h1>Danh sách người dùng</h1>
+<% if (getPermission(permissions, "users.add")) { %>
+<a href="/users/add" class="btn btn-success mb-3" style="width: 20%">
+    Thêm mới
+</a>
+<% } %>
+
+<table class="table table-bordered">
+    <thead>
+        <th width="5%">STT</th>
+        <th>Tên</th>
+        <th>Email</th>
+        <th width="15%">Phân quyền</th>
+        <% if (getPermission(permissions, "users.update")) { %>
+        <th width="5%">Sửa</th>
+        <% } %> <% if (getPermission(permissions, "users.delete")) { %>
+        <th width="5%">Xóa</th>
+        <% } %>
+    </thead>
+    <tbody>
+        <% users.forEach(({id, name, email}, index) => { %>
+        <tr>
+            <td><%= index+1%></td>
+            <td><%= name%></td>
+            <td><%= email%></td>
+            <td>
+                <a href="/users/permission/<%= id %>" class="btn btn-success"
+                    >Phân quyền</a
+                >
+            </td>
+            <% if (getPermission(permissions, "users.update")) { %>
+            <td>
+                <a href="/users/edit/<%= id %>" class="btn btn-warning">Sửa</a>
+            </td>
+            <% } %> <% if (getPermission(permissions, "users.delete")) { %>
+            <td>
+                <a href="/users/delete/<%= id %>" class="btn btn-danger">Xóa</a>
+            </td>
+            <% } %>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
