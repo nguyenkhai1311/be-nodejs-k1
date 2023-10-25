@@ -165,6 +165,9 @@ module.exports = {
                     },
                 }
             );
+            const user = await User.findByPk(id, {
+                attributes: ["id", "name", "email", "createdAt", "updatedAt"],
+            });
             Object.assign(response, {
                 status: "success",
                 data: user,
@@ -219,6 +222,9 @@ module.exports = {
                 where: {
                     id,
                 },
+            });
+            const user = await User.findByPk(id, {
+                attributes: ["id", "name", "email", "createdAt", "updatedAt"],
             });
             Object.assign(response, {
                 status: "success",
