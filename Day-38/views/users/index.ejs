@@ -1,0 +1,21 @@
+<h1>Danh Sách Khách Hàng</h1>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Họ Tên</th>
+            <th scope="col">Email</th>
+            <th scope="col">Ngày tạo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% users.forEach(({id, name, email, createdAt}, index) => { %>
+        <tr>
+            <th width="5%"><%- index %></th>
+            <td><%- name %></td>
+            <td><%- email %></td>
+            <td width="25%"><%- moment(createdAt).format("DD/MM/YYYY") %></td>
+        </tr>
+        <% }) %>
+    </tbody>
+</table>
