@@ -10,10 +10,11 @@ const expressLayouts = require("express-ejs-layouts");
 const cors = require("cors");
 
 const model = require("./models/index");
-const User = model.User;
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
+const apiRouter = require("./routes/api");
 
 const localPassport = require("./passport/localPassport");
 
@@ -36,8 +37,9 @@ passport.serializeUser(function (user, done) {
     done(null, user.id);
 });
 
-passport.deserializeUser(function (id, done) {
-    done(null, User.findByPk(id));
+passport.deserializeUser(async function (id, done) {
+    const user = await model.User.findByPk(id);
+    done(null, user);
 });
 
 passport.use("local", localPassport);
@@ -55,6 +57,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/auth", authRouter);
+app.use("/api", apiRouter);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 

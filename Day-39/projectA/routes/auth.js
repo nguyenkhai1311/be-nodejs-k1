@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const passport = require("passport");
 
 const AuthController = require("../controllers/AuthController");
+const AuthorizeMiddleware = require("../middlewares/AuthorizeMiddleware");
 
 const isLogin = (req, res, next) => {
     if (req.user) {
@@ -22,6 +23,8 @@ router.post(
     }),
     AuthController.handleLogin
 );
+
+router.get("/redirect", AuthController.redirect);
 
 router.get("/logout", AuthController.logout);
 

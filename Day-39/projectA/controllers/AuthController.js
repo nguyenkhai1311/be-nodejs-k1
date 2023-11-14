@@ -1,38 +1,28 @@
 const fs = require("fs");
 const jwt = require("jsonwebtoken");
 const { v4: uuidv4 } = require("uuid");
+const md5 = require("md5");
 
 module.exports = {
     login: (req, res) => {
-        res.render("auth/login");
+        const { redirect } = req.query;
+        res.render("auth/login", { redirect });
     },
 
     handleLogin: async (req, res) => {
-        const key = req.query;
-        const { email, password } = req.body;
-        const clientId = uuidv4();
-        const token = jwt.sign({ email, password, clientId }, "f8");
-        if (!fs.existsSync("../data")) {
-            fs.mkdirSync("../data");
-        }
-        const data = {
-            token: token,
-        };
-        try {
-            fs.writeFileSync("../data/data.json", JSON.stringify(data));
-        } catch (e) {
-            console.log(e.message);
-        }
-        if (key.key) {
-            return res.redirect(`http://localhost:3001/`);
+        if (req.query.redirect) {
+            return res.redirect("/auth/redirect?url=" + req.query.redirect);
         }
         res.redirect("/");
     },
 
+    redirect: (req, res) => {
+        const cookie = req.cookies["connect.sid"];
+        console.log(req.query.url);
+        res.redirect(req.query.url + `?cookie=${cookie}`);
+    },
+
     logout: async (req, res) => {
-        if (fs.existsSync("../data/data.json")) {
-            fs.unlinkSync("../data/data.json");
-        }
         req.logout(function (err) {
             if (err) {
                 return next(err);

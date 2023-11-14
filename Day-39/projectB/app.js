@@ -6,10 +6,14 @@ var logger = require("morgan");
 const cors = require("cors");
 const session = require("express-session");
 const flash = require("connect-flash");
+const expressLayouts = require("express-ejs-layouts");
 
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
+
+const AuthMiddleware = require("./middlewares/AuthMiddleware");
+const GuestMiddleware = require("./middlewares/GuestMiddleware");
 
 var app = express();
 
@@ -28,13 +32,16 @@ app.use(cors());
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use(expressLayouts);
+
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/auth", authRouter);
+app.use("/auth", GuestMiddleware, authRouter);
+app.use(AuthMiddleware);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
