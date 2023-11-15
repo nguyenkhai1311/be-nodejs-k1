@@ -16,6 +16,8 @@ var usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 const apiRouter = require("./routes/api");
 
+const AuthMiddleware = require("./middlewares/AuthMiddleware");
+
 const localPassport = require("./passport/localPassport");
 
 var app = express();
@@ -58,6 +60,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/auth", authRouter);
 app.use("/api", apiRouter);
+app.use(AuthMiddleware);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 

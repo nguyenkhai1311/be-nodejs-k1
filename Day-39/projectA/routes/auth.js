@@ -1,20 +1,11 @@
 var express = require("express");
 var router = express.Router();
-const fs = require("fs");
-const jwt = require("jsonwebtoken");
 const passport = require("passport");
 
 const AuthController = require("../controllers/AuthController");
-const AuthorizeMiddleware = require("../middlewares/AuthorizeMiddleware");
+const GuestMiddleware = require("../middlewares/GuestMiddleware");
 
-const isLogin = (req, res, next) => {
-    if (req.user) {
-        res.redirect("/");
-    }
-    next();
-};
-
-router.get("/login", isLogin, AuthController.login);
+router.get("/login", GuestMiddleware, AuthController.login);
 router.post(
     "/login",
     passport.authenticate("local", {
@@ -25,7 +16,9 @@ router.post(
 );
 
 router.get("/redirect", AuthController.redirect);
-
 router.get("/logout", AuthController.logout);
+
+router.get("/identify", AuthController.identify);
+router.post("/identify", AuthController.verify);
 
 module.exports = router;

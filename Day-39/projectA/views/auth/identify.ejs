@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/identify.css" />
+
+<h2>Vui lòng nhập mã số OTP:</h2>
+<form action="/auth/identify?current=<%= linkRedirect %>" method="post">
+    <input
+        type="text"
+        placeholder="0"
+        maxlength="1"
+        oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+        name="numberOne"
+    />
+    <input
+        type="text"
+        placeholder="0"
+        maxlength="1"
+        oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+        name="numberTwo"
+    />
+    <input
+        type="text"
+        placeholder="0"
+        maxlength="1"
+        oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+        name="numberThree"
+    />
+    <input
+        type="text"
+        placeholder="0"
+        maxlength="1"
+        oninput="this.value=this.value.replace(/[^0-9]/g,'');"
+        name="numberFour"
+    />
+    <button type="submit" class="submit">SUBMIT</button>
+</form>

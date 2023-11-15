@@ -1,0 +1,38 @@
+* {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+.container p {
+    display: flex;
+    justify-content: center;
+    color: #baa4da;
+    font-weight: 700;
+}
+
+.container input {
+    font-size: 24px;
+    height: 60px;
+    margin-top: 12px;
+    text-align: center;
+    width: 50px;
+}
+
+.btn-back {
+    display: inline;
+    margin-top: 10px;
+    margin-left: 60px;
+}
+
+.submit {
+    display: block;
+    margin-top: 20px;
+    margin-left: 90px;
+}
+
+.error {
+    color: #e01010;
+    display: flex;
+    justify-content: center;
+}

@@ -13,7 +13,6 @@ var usersRouter = require("./routes/users");
 const authRouter = require("./routes/auth");
 
 const AuthMiddleware = require("./middlewares/AuthMiddleware");
-const GuestMiddleware = require("./middlewares/GuestMiddleware");
 
 var app = express();
 
@@ -40,7 +39,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/auth", GuestMiddleware, authRouter);
+app.use("/auth", authRouter);
 app.use(AuthMiddleware);
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
